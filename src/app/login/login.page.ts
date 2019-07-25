@@ -10,7 +10,7 @@ import { RegisterPage } from './register.page'
 @Component({
    selector: 'app-login',
    templateUrl: './login.page.html',
-   styleUrls: ['./login.page.scss', '../../buttons.scss'],
+   styleUrls: ['./login.page.scss', '../buttons.scss'],
 })
 export class LoginPage implements OnInit {
 
