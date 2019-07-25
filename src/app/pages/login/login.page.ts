@@ -1,79 +1,94 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
+import { AuthService } from 'fwk4-authentication'
 import { Router } from '@angular/router'
-import { GlobalService, ApplicationService } from 'fwk4-services'
-import { AuthService, UserModel } from 'fwk4-authentication'
-import { environment } from '../../../environments/environment'
+import { ApplicationService } from 'fwk4-services'
+import { ModalController } from '@ionic/angular'
+import { RegisterPage } from './register.page'
 
-import * as firebase from 'firebase'
 
 @Component({
    selector: 'app-login',
    templateUrl: './login.page.html',
-   styleUrls: ['./login.page.scss'],
+   styleUrls: ['./login.page.scss', '../../buttons.scss'],
 })
 export class LoginPage implements OnInit {
 
-   loginForm: FormGroup;
-   errorMessage: string = ''
+   validations_form: FormGroup
 
-   user: UserModel = new UserModel()
+   validation_messages = {
+      'email': [
+         { type: 'required', message: 'El correo electrónico es requerido' },
+         { type: 'minlength', message: 'El correo electrónico debe tener al menos 5 caracteres' },
+         { type: 'maxlength', message: 'El correo electrónico no puede superar los 50 caracteres' },
+         { type: 'pattern', message: 'Por favor ingrese un email correcto' }
+      ],
+      'password': [
+         { type: 'required', message: 'Contraseña requerida' },
+         { type: 'minlength', message: 'La contraseña debe tener al menos 5 caracteres' },
+         { type: 'maxlength', message: 'La contraseña no puede superar los 20 caracteres' }
+      ]
+   }
 
    constructor(
-      private globalSrv: GlobalService,
+      private appSrv: ApplicationService,
       private authSrv: AuthService,
-      private route: Router
+      private modalController: ModalController,
+      private route: Router,
+      private formBuilder: FormBuilder
    ) {
       console.log('LoginPage constructor')
-   }
-
-   ngOnInit() {
-      // this.userSrv.getCurrentUser().then(u => {
-      //    this.user = u
-      //    console.log('current user: ', u)
-      // })
-
-      this.loginForm = new FormGroup({
-         email: new FormControl('', Validators.required),
-         password: new FormControl('', Validators.required),
+      this.appSrv.configLoading('p&pSoft.png', 'spinnerClass', 'spinnerCss')
+      
+      this.validations_form = this.formBuilder.group({
+         email: new FormControl('',
+            Validators.compose([
+               Validators.required,
+               Validators.minLength(5),
+               Validators.maxLength(50),
+               Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            ])),
+         password: new FormControl('',
+            Validators.compose([
+               Validators.minLength(5),
+               Validators.maxLength(20),
+               Validators.required
+            ])),
       })
+      //this.validations_form.setValue({ password: 'xxxxx', email: 'pepepe@gmail.com' });
+   }
 
+   async ngOnInit() {
+      let usr = await this.authSrv.loggedUser()
+      if (usr != null) {
+         this.route.navigate(['/menu/eventos'])
+      }
+   }
 
+   async tryEmailLogin(value) {
+      try {
+         await this.authSrv.doLogin(value)
+         this.route.navigate(['/menu/pacientes']) 
+      } catch (error) {
+         this.appSrv.message('Usuario o contraseña inválidos', 'error')
+      }
+   }
 
-
-      const statusRef = firebase.database().ref().child('users/Pablito')
-      const serverTime = firebase.database.ServerValue.TIMESTAMP
-      statusRef.onDisconnect().update({ 'status': 'offline!!!', timeOFF: firebase.database.ServerValue.TIMESTAMP })
-
-      const connectedRef = firebase.database().ref('.info/connected')
-      connectedRef.on('value', function (snap) {
-         if (snap.val() === true) {
-            //lastOnlineRef.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
-            console.log('online')
-            statusRef.update({ status: 'online', timeON: new Date().toString() })
-         }
+   async gotoRegister() {
+      const modal = await this.modalController.create({
+         component: RegisterPage,
+         componentProps: {}
       })
+      return await modal.present()
    }
 
-   async tryEmailLogin() {
-      this.user = await this.authSrv.doLogin(this.loginForm.value)
-      this.goHome()
-   }
-   async tryFacebookLogin() {
-      this.user = await this.authSrv.doFacebookLogin()
-      this.goHome()
-   }
-   async tryGoogleLogin() {
-      this.user = await this.authSrv.doGoogleLogin(environment.googleWebClientId)
-      this.goHome()
-   }
-   goRegisterPage() {
-      this.route.navigate(['/register'])
-   }
 
-   private goHome() {
-      this.globalSrv.setItem('user', this.user)
-      this.route.navigate(['/home'])
-   }
-
+   // async tryFacebookLogin() {
+   //    this.user = await this.authSrv.doFacebookLogin()
+   //    this.goHome()
+   // }
+   // async tryGoogleLogin() {
+   //    this.user = await this.authSrv.doGoogleLogin(environment.googleWebClientId)
+   //    this.goHome()
+   // }
 }

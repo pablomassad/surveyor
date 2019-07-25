@@ -5,7 +5,6 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
    { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
    {
       path: 'members',
       canActivate: [AuthGuardService],
@@ -20,4 +19,8 @@ const routes: Routes = [
    ],
    exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+   constructor() {
+      console.log('AppRoutingModule constructor')
+   }
+ }

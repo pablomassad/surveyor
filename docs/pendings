@@ -1,0 +1,43 @@
+APK
+   [OK] Styles Splash Screen and LOGO
+
+--------------------------------------------------------
+Login/Register
+   [OK] Pagina de register completa
+   Logout Spinner dando vuelta
+   Recuperar Contrasena
+
+--------------------------------------------------------
+Pacientes
+   [OK] Layout Styles
+   [OK] Agregar Paciente
+
+--------------------------------------------------------
+Ficha 
+   [OK] Layout Styles
+   [OK] Cambiar foto web/mobile
+   [OK] Firebase Storage
+   [OK] ABM
+
+--------------------------------------------------------
+Historia Clinica
+      Primera entrevista (implementar...)
+   [OK] Layout Styles
+   [OK] ABM 
+
+--------------------------------------------------------
+Documentacion
+   [OK] Layout Styles
+   [OK] Listado total de adjuntos de todas las sessiones x paciente
+
+--------------------------------------------------------
+Facturas / Facturacion
+   [OK] Layout Styles
+
+--------------------------------------------------------
+Configuracion
+   [OK] Layout Styles
+   Eliminacion de cuenta
+
+
+

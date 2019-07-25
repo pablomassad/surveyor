@@ -1,0 +1,21 @@
+{
+   "android":
+   {
+      "debug":
+      {
+         "keystore":"pp.keystore",
+         "storePassword":"Miramar.16",
+         "alias":"integralmente",
+         "password":"Miramar.16",
+         "keystoreType":"JKS"
+      },
+      "release":
+      {
+         "keystore":"pp.keystore",
+         "storePassword":"Miramar.16",
+         "alias":"integralmente",
+         "password":"Miramar.16",
+         "keystoreType":"JKS"
+      }
+   }
+}

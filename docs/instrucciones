@@ -1,0 +1,39 @@
+npm install @angular/fire firebase --save
+
+npm install --save @ionic-native/ionic-webview
+
+
+deploy HOST Firebase
+- copiar environments a prod
+- ionic build --prod --service-worker
+
+
+sudo chown -R $(whoami) .
+
+
+keytool -genkey -v -keystore toolbox.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias toolbox
+
+#Crear archivo build.json
+{
+   "android":
+   {
+      "debug":
+      {
+         "keystore":"pp.keystore",
+         "storePassword":"Miramar.16",
+         "alias":"integralmente",
+         "password":"Miramar.16",
+         "keystoreType":"JKS"
+      },
+      "release":
+      {
+         "keystore":"pp.keystore",
+         "storePassword":"Miramar.16",
+         "alias":"integralmente",
+         "password":"Miramar.16",
+         "keystoreType":"JKS"
+      }
+   }
+}
+
+ionic cordova build android --buildConfig build.json  --release
