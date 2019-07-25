@@ -1,14 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+   <div *ngIf="user.displayName != ''">
+      <div class="userName">Welcome, {{user.displayName}}</div>
+      <div class="userEmail">{{user.email}}</div>
+      <div class="userImage">
+         <img [src]="user.photoURL">
+      </div>
+      <div class="userProvider">{{user.provider}}</div>
+      <div class="userUid">{{user.uid}}</div>
+      <ion-button fill="solid" expand="block" color="dark" (click)="logout()">Logout</ion-button>
+   </div>
 </ion-content>

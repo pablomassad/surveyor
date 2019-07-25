@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "342119302614",
+    "firebase_url": "https://events-12be3.firebaseio.com",
+    "project_id": "events-12be3",
+    "storage_bucket": "events-12be3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342119302614:android:a558aada6e2d1003",
+        "android_client_info": {
+          "package_name": "com.pp.nativelogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342119302614-obsf9qm38kr3pgfkt0vdt1qo91p2n305.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pp.nativelogin",
+            "certificate_hash": "17e73fb7e8faf0bb64f2ece77796a00927135964"
+          }
+        },
+        {
+          "client_id": "342119302614-0mssspk8dran8pnls7itaaog1t3cf9kt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmRQp_0ZO8zbhfGP8yf5DLRlIOdvXxT_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342119302614-0mssspk8dran8pnls7itaaog1t3cf9kt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "342119302614-4n24egi51n11gi2m34pshppimh92opbb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pp.meetingmaster"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342119302614:android:27f12bca25c70c8c",
+        "android_client_info": {
+          "package_name": "com.pp.surveyor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342119302614-cuhnr9g2s9u8abcm717ehfogcv2ckesp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pp.surveyor",
+            "certificate_hash": "17e73fb7e8faf0bb64f2ece77796a00927135964"
+          }
+        },
+        {
+          "client_id": "342119302614-0mssspk8dran8pnls7itaaog1t3cf9kt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmRQp_0ZO8zbhfGP8yf5DLRlIOdvXxT_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342119302614-0mssspk8dran8pnls7itaaog1t3cf9kt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "342119302614-4n24egi51n11gi2m34pshppimh92opbb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pp.meetingmaster"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
