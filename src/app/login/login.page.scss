@@ -30,17 +30,26 @@
    box-shadow: 0 0 40px #444;
    border-radius: 10px;
    background: linear-gradient(#ffffff 50%, #eeeeee);
-   height: 440px;
+   height: 131vw;
+   min-height: 400px;
+   max-height: 500px;
    width: 100%;
 }
 
+.formLogo{
+   display: grid;
+   justify-items: center;
+}
 .formTitle {
-   color: #222;
+   color: #ddd;
    font-family: sans-serif;
-   font-size: 40px;
+   font-size: 13vw;
    font-weight: bold;
-   text-align: center;
-   text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+   text-shadow: 1px 1px 3px black;
+}
+.logo{
+   width: 41vw;
+   max-width: 200px;
 }
 
 .formlogin{
@@ -63,3 +72,8 @@
   margin-top: 20px;
 }
 
+@media only screen and (min-width: 400px) {
+   .formTitle {
+      font-size: 50px;
+   }
+}

@@ -16,7 +16,6 @@ export class FbsService {
       private afStorage: AngularFireStorage) {
       console.log('FbsService constructor')
    }
-
    shortName(n) {
       const maxLen = 12
       var ext = n.substring(n.lastIndexOf(".") + 1, n.length).toLowerCase();
@@ -27,7 +26,6 @@ export class FbsService {
       filename = filename.substr(0, maxLen) + (n.length > maxLen ? '...' : '');
       return filename + '.' + ext;
    }
-
    showAllFiles(dni) {
       // Create a reference under which you want to list
       var listRef = this.afStorage.storage.ref().child(dni.toString());
@@ -82,18 +80,6 @@ export class FbsService {
          }
       })
    }
-
-   private pushUpload(data, stPath) {
-      let storageRef = firebase.storage().ref()
-      this.uploadTask = storageRef.child(stPath).put(data)
-
-      this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, (snapshot) => {
-         //attachment.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      }, error => {
-         console.log('upload file error: ', error)
-      })
-      return this.uploadTask
-   }
    deleteFileStorage(id, name: string) {
       return new Promise((resolve, reject) => {
          this.appSrv.showLoading()
@@ -111,32 +97,17 @@ export class FbsService {
       })
    }
 
+   private pushUpload(data, stPath) {
+      let storageRef = firebase.storage().ref()
+      this.uploadTask = storageRef.child(stPath).put(data)
 
-
-   // async startSpinner() {
-   //    this.loading = await this.loadingCtrl.create({
-   //       spinner: "bubbles",
-   //       // message: 'cargando...'
-   //    })
-   //    await this.loading.present()
-   // }
-   // stopSpinner(){
-   //    this.loading.dismiss()
-   // }
-
-
-   // uploadPic(dni, upload) {
-   //    const newName = upload.file.name //`${new Date().getTime()}`
-   //    const stPath = dni + '/' + newName
-   //    const uploadTask = this.afStorage.upload(stPath, upload.file)
-   //    return uploadTask
-   // }
-
-   // deleteFile(file) {
-   //    let key = file.key
-   //    let storagePath = file.fullPath
-   //    this.afStorage.ref(storagePath).delete()
-   // }
+      this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, (snapshot) => {
+         //attachment.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+      }, error => {
+         console.log('upload file error: ', error)
+      })
+      return this.uploadTask
+   }
 }
 
 export class Upload {

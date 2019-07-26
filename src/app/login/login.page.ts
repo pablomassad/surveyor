@@ -61,14 +61,14 @@ export class LoginPage implements OnInit {
    async ngOnInit() {
       let usr = await this.authSrv.loggedUser()
       if (usr != null) {
-         this.route.navigate(['/menu/eventos'])
+         this.route.navigate(['/menu/home'])
       }
    }
 
    async tryEmailLogin(value) {
       try {
          await this.authSrv.doLogin(value)
-         this.route.navigate(['/menu/pacientes']) 
+         this.route.navigate(['/menu/home']) 
       } catch (error) {
          this.appSrv.message('Usuario o contraseña inválidos', 'error')
       }

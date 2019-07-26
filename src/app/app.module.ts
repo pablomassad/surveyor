@@ -22,7 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { GooglePlus } from '@ionic-native/google-plus/ngx'
 import { Facebook } from '@ionic-native/facebook/ngx'
-
+import { Chooser } from '@ionic-native/chooser/ngx'
 
 
 @NgModule({
@@ -44,6 +44,7 @@ import { Facebook } from '@ionic-native/facebook/ngx'
       SplashScreen,
       Facebook,
       GooglePlus,
+      Chooser,
       WebView,
       { provide: FirestoreSettingsToken, useValue: {} },
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

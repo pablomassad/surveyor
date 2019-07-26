@@ -3,50 +3,49 @@
       <ion-grid class="loginFrame">
          <ion-row>
             <div class="loginPanel">
+               <form [formGroup]="validations_form" class="backForm formlogin"
+                  (ngSubmit)="tryEmailLogin(validations_form.value)">
+                  <div class="formLogo">
+                     <img src="assets/images/logo.jpg" class="logo">
+                     <div class="formTitle">Sourveyor</div>
+                  </div>
 
+                  <input formControlName="email" type="text" placeholder="Correo electrónico">
+                  <div class="validation-errors">
+                     <ng-container *ngFor="let validation of validation_messages.email">
+                        <div class="error-message"
+                           *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                           {{ validation.message }}
+                        </div>
+                     </ng-container>
+                  </div>
+
+                  <input formControlName="password" type="password" placeholder="Contraseña">
+                  <div class="validation-errors">
+                     <ng-container *ngFor="let validation of validation_messages.password">
+                        <div class="error-message"
+                           *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                           {{ validation.message }}
+                        </div>
+                     </ng-container>
+                  </div>
+
+                  <button [disabled]="!validations_form.valid" type="submit" class="glass btnLogin">Ingresar</button>
+
+                  <!-- <div class="grdButtons">
+                  <button class="btns btnLogin btnSignIn" type="submit" (click)="tryEmailLogin()">Ingresar</button>
+                  <button class="btns btnLogin btnSignUp" type="submit" (click)="goRegisterPage()">Registrar</button>
+   
+                  <button class="btns btnSocial btnFacebook" type="submit" (click)="tryGoogleLogin()">
+                     <ion-icon name="logo-facebook"></ion-icon>
+                  </button>
+                  <button class="btns btnSocial btnGoogle" type="submit" (click)="tryFacebookLogin()">
+                     <ion-icon name="logo-google"></ion-icon>
+                  </button>
+               </div> -->
+               </form>
             </div>
          </ion-row>
-         <form [formGroup]="validations_form" class="backForm formlogin"
-            (ngSubmit)="tryEmailLogin(validations_form.value)">
-            <div class="formTitle">
-               Sourveyor
-            </div>
-
-            <input formControlName="email" type="text" placeholder="Correo electrónico">
-            <div class="validation-errors">
-               <ng-container *ngFor="let validation of validation_messages.email">
-                  <div class="error-message"
-                     *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
-                     {{ validation.message }}
-                  </div>
-               </ng-container>
-            </div>
-
-            <input formControlName="password" type="password" placeholder="Contraseña">
-            <div class="validation-errors">
-               <ng-container *ngFor="let validation of validation_messages.password">
-                  <div class="error-message"
-                     *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
-                     {{ validation.message }}
-                  </div>
-               </ng-container>
-            </div>
-
-            <button [disabled]="!validations_form.valid" type="submit" class="glass btnLogin">Ingresar</button>
-
-            <!-- <div class="grdButtons">
-               <button class="btns btnLogin btnSignIn" type="submit" (click)="tryEmailLogin()">Ingresar</button>
-               <button class="btns btnLogin btnSignUp" type="submit" (click)="goRegisterPage()">Registrar</button>
-
-               <button class="btns btnSocial btnFacebook" type="submit" (click)="tryGoogleLogin()">
-                  <ion-icon name="logo-facebook"></ion-icon>
-               </button>
-               <button class="btns btnSocial btnGoogle" type="submit" (click)="tryFacebookLogin()">
-                  <ion-icon name="logo-google"></ion-icon>
-               </button>
-            </div> -->
-         </form>
-
          <ion-row justify-content-center>
             <button (click)="gotoRegister()" type="submit" class="glass btnRegister">Registrarse</button>
          </ion-row>
