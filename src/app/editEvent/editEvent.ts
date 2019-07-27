@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonicPage, ViewController, NavParams, Events, ModalController, Modal, Platform, AlertController } from 'ionic-angular';
-import { SocialSharing } from '@ionic-native/social-sharing'
-import { ApplicationService } from 'fwk-services';
+import { NavParams, Events, ModalController, Platform, AlertController } from '@ionic/angular';
+import { ApplicationService } from 'fwk4-services'
+import { SocialSharing } from '@ionic-native/social-sharing/ngx'
 
 import * as moment from 'moment'
-import { FirebaseService } from '../../shared/services/firebase.service';
+import { DBService } from '../shared/services/db.service';
+import { ViewController } from '@ionic/core';
 
-@IonicPage()
 @Component({
    selector: 'page-editEvent',
    templateUrl: 'editEvent.html'
@@ -28,7 +28,7 @@ export class EditEventPage implements OnInit, OnDestroy {
       private navParams: NavParams,
       private view: ViewController,
       private appSrv: ApplicationService,
-      private fs: FirebaseService,
+      private fs: DBService,
       private modal: ModalController,
       private socialSharing: SocialSharing
    ) {
@@ -57,25 +57,27 @@ export class EditEventPage implements OnInit, OnDestroy {
       }
    }
    adminMembers() {
-      const mod: Modal = this.modal.create('MembersPage', {
-         title: "Miembros",
-         owner: this.evt.owner,
-         contactsFull: this.contactsFull
-      }, {})
-      mod.present()
-      mod.onDidDismiss(cf => {
-      })
+      // const mod: Modal = this.modal.create('MembersPage', {
+      //    title: "Miembros",
+      //    owner: this.evt.owner,
+      //    contactsFull: this.contactsFull
+      // }, {})
+      // mod.present()
+      // mod.onDidDismiss(cf => {
+      // })
    }
    share() {
       if (this.platform.is('cordova')) {
          //const url = 'https://events-12be3.firebaseapp.com?idevt=' + this.evt.id
          const url = 'https://events-12be3.firebaseapp.com/#' + this.evt.id
 
-         this.socialSharing.shareViaWhatsApp('Invitacion a evento: ', '', url).then(() => {
-            this.appSrv.message('Se ha enviado notificacion a evento!')
-         }).catch(() => {
-            this.appSrv.message('No posee Whatsapp')
-         })
+         this.socialSharing.shareViaWhatsApp('Invitacion a evento: ', '', url)
+            .then(() => {
+               this.appSrv.message('Se ha enviado notificacion a evento!')
+            })
+            .catch(err => {
+               this.appSrv.message('No posee Whatsapp')
+            })
       }
       // this.socialSharing.canShareViaEmail().then(() => {
       //    // Sharing via email is possible
@@ -99,7 +101,7 @@ export class EditEventPage implements OnInit, OnDestroy {
       let alert: any
       if (Object.keys(this.evt.selectionItems[item]).length > 0) {
          alert = this.alertCtrl.create({
-            title: 'Aviso',
+            header: 'Aviso',
             message: 'Esta seguro de eliminar este item?',
             buttons: [
                {
@@ -121,7 +123,7 @@ export class EditEventPage implements OnInit, OnDestroy {
       }
       else {
          alert = this.alertCtrl.create({
-            title: 'Aviso',
+            header: 'Aviso',
             message: 'No es posible eliminar este item, ya hay informacion cargada',
             buttons: [
                {
@@ -166,10 +168,10 @@ export class EditEventPage implements OnInit, OnDestroy {
             break;
       }
       this.fs.saveEvent(this.evt)
-      this.view.dismiss()
+      //this.view.dismiss()
    }
    closeModal() {
-      this.view.dismiss(null)
+      //this.view.dismiss(null)
    }
 
    private updateSelectionKeys() {

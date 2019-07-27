@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { AuthService } from 'fwk-authentication';
+import { Component } from '@angular/core'
 
 @Component({
     selector: 'user-profile',
@@ -7,7 +6,7 @@ import { AuthService } from 'fwk-authentication';
 })
 export class UserProfileComponent {
     
-    constructor( public authSrv: AuthService){
+    constructor( ){
         console.log('UserProfileComponent constructor');
     } 
 

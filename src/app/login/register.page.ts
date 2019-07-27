@@ -3,7 +3,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { AuthService } from 'fwk4-authentication'
 import { GlobalService } from 'fwk4-services'
 import { ModalController} from '@ionic/angular'
-import { FbsService } from 'src/app/fbs.service'
+import { FbsService } from '../shared/services/fbs.service'
 import { Chooser } from '@ionic-native/chooser/ngx'
 
 @Component({

@@ -25,9 +25,7 @@ const routes: Routes = [
       RouterModule.forChild(routes),
       Fwk4AuthenticationModule
    ],
-   entryComponents: [
-      RegisterPage
-   ],
+   entryComponents: [ RegisterPage ],
    declarations: [LoginPage, RegisterPage]
 })
 export class LoginPageModule {

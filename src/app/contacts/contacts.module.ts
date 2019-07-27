@@ -1,27 +1,32 @@
 import { NgModule } from '@angular/core'
-import { IonicPageModule } from 'ionic-angular'
 import { CommonModule } from '@angular/common'
 import { OrderModule } from 'ngx-order-pipe'
+import { IonicModule } from '@ionic/angular'
+import { Routes, RouterModule } from '@angular/router'
+import { FormsModule } from '@angular/forms'
 
 import { ContactsPage } from './contacts'
-import { SharedModule } from '../../shared/shared.module'
-import { PipesModule } from '../../shared/pipes/pipes.module';
+import { SharedModule } from '../shared/shared.module'
+import { PipesModule } from '../shared/pipes/pipes.module';
 
-
+const routes: Routes = [
+   {
+     path: '',
+     component: ContactsPage
+   }
+ ];
 
 @NgModule({
-   declarations: [
-      ContactsPage
-   ],
    imports: [
+      IonicModule,
       SharedModule.forRoot(),
       PipesModule,
       CommonModule,
+      FormsModule,
       OrderModule,
-      IonicPageModule.forChild(ContactsPage)
+      RouterModule.forChild(routes)
    ],
-   exports: [ContactsPage],
-   providers: []
+   declarations: [ContactsPage]
 })
 
 export class ContactsPageModule {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { Platform } from 'ionic-angular'
-import { Firebase } from '@ionic-native/firebase'
-import { FirebaseService } from '../services/firebase.service'
+import { Platform } from '@ionic/angular'
+// import { Firebase } from '@ionic-native/firebase'
+// import { FirebaseService } from '../services/firebase.service'
 
 @Injectable()
 export class FCMService {
@@ -9,9 +9,9 @@ export class FCMService {
 
 
    constructor(
-      private firebaseNative: Firebase,
+      // private firebaseNative: Firebase,
       private platform: Platform,
-      private fs: FirebaseService
+      // private fs: FirebaseService
    ) {
       console.log('FCMService constructor');
    }
@@ -21,15 +21,15 @@ export class FCMService {
    async getToken() {
       let token
       if (this.platform.is('android')) {
-         token = await this.firebaseNative.getToken()
+         // token = await this.firebaseNative.getToken()
       }
       return this.saveTokenToFirebase(token)
    }
    subscribeTopic(topic: string) {
-      this.firebaseNative.subscribe(topic)
+      // this.firebaseNative.subscribe(topic)
    }
    listenOnNotification(){
-      return this.firebaseNative.onNotificationOpen() 
+      // return this.firebaseNative.onNotificationOpen() 
    }
 
    private saveTokenToFirebase(token) {

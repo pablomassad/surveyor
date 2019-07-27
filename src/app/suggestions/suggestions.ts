@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { IonicPage, ViewController, NavParams } from 'ionic-angular';
-import { FirebaseService } from '../../shared/services/firebase.service';
+import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core'
+import { NavParams } from '@ionic/angular'
 import { Subscription } from 'rxjs';
+import { ViewController } from '@ionic/core';
+import { DBService } from '../shared/services/db.service'
 
-@IonicPage()
+
 @Component({
    selector: 'page-suggestions',
    templateUrl: 'suggestions.html'
@@ -22,7 +23,7 @@ export class SuggestionsPage implements OnInit, OnDestroy {
    constructor(
       private navParams: NavParams,
       private view: ViewController,
-      private fs: FirebaseService
+      private fs: DBService
    ) {
       console.log('SuggestionPage constructor');
       this.title = this.navParams.get('title')
@@ -62,7 +63,7 @@ export class SuggestionsPage implements OnInit, OnDestroy {
       this.fs.deleteSuggestion(item)
    }
    closeModal() {
-      this.view.dismiss(null)
+      //this.view.dismiss(null)
    }
    
    private scrollDown(){

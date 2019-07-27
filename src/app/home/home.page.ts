@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { GlobalService, ApplicationService } from 'fwk4-services'
 import { Router } from '@angular/router'
-import { AlertController,ModalController } from '@ionic/angular';
-import { EditEventPage } from '../editEvent/editEvent';
-import { DBService } from '../shared/services/db.service';
-import { Subscription } from 'rxjs';
+import { AlertController,ModalController } from '@ionic/angular'
+import { EditEventPage } from '../editEvent/editEvent'
+import { DBService } from '../shared/services/db.service'
+import { Subscription } from 'rxjs'
 
 @Component({
    selector: 'app-home',

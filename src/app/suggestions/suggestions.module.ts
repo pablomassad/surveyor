@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core'
-import { IonicPageModule } from 'ionic-angular'
 import { CommonModule } from '@angular/common'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { Routes, RouterModule } from '@angular/router'
 import { OrderModule } from 'ngx-order-pipe'
 
 import { SuggestionsPage } from './suggestions'
-import { SharedModule } from '../../shared/shared.module'
-import { PipesModule } from '../../shared/pipes/pipes.module';
+import { PipesModule } from '../shared/pipes/pipes.module';
 
-
+const routes: Routes = [
+   {
+      path: '',
+      component: SuggestionsPage
+   }
+];
 
 @NgModule({
-   declarations: [
-      SuggestionsPage
-   ],
    imports: [
-      SharedModule.forRoot(),
       PipesModule,
       CommonModule,
       OrderModule,
-      IonicPageModule.forChild(SuggestionsPage)
+      RouterModule.forChild(routes),
    ],
-   exports: [SuggestionsPage],
-   providers: []
+   declarations: [ SuggestionsPage ]
 })
 
 export class SuggestionsPageModule {

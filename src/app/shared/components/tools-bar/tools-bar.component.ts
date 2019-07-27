@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core'
 
 @Component({
   selector: 'tools-bar',
@@ -8,9 +7,7 @@ import { NavController, Events } from 'ionic-angular';
 export class ToolsBarComponent implements OnInit, OnDestroy {
   @Input() title;
 
-  constructor(
-    private navCtrl: NavController,
-    private evt: Events) {
+  constructor() {
     console.log('ToolsBarComponent constructor');
   }
 

@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core'
-import { IonicPageModule } from 'ionic-angular'
+import { IonicModule } from '@ionic/angular'
 import { CommonModule } from '@angular/common'
-import { SocialSharing } from '@ionic-native/social-sharing'
+import { SocialSharing } from '@ionic-native/social-sharing/ngx'
 import { EditEventPage } from './editEvent'
-import { SharedModule } from '../../shared/shared.module'
+import { SharedModule } from '../shared/shared.module'
 
 
 @NgModule({
-   declarations: [
-      EditEventPage
-   ],
+
    imports: [
       SharedModule.forRoot(),
-      CommonModule,
-      IonicPageModule.forChild(EditEventPage)
+      CommonModule
    ],
+   declarations: [EditEventPage],
    exports: [EditEventPage],
    providers: [SocialSharing]
 })

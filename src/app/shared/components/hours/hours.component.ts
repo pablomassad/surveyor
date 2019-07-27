@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core'
 
-import { GlobalService, ApplicationService } from 'fwk-services'
+import { GlobalService, ApplicationService } from 'fwk4-services'
 
 @Component({
    selector: 'hours',
