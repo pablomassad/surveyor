@@ -22,7 +22,7 @@ export class DBService {
    ///////////////////////////////////////////////
    getCommunity():Observable<any[]>{
       const ref = this.afs.collection('users')
-      return ref.valueChanges()
+      return ref.valueChanges({idField:'id'})
    }
    getUserById(uid){
       const uref = this.afs.collection('users').doc(uid)

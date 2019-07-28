@@ -4,7 +4,8 @@ import { GlobalService } from 'fwk4-services'
 import { ModalController } from '@ionic/angular'
 import { FbsService } from '../../services/fbs.service'
 import { Chooser } from '@ionic-native/chooser/ngx'
-import { FirebaseService, UserModel } from 'fwk4-authentication'
+import { UserModel } from 'fwk4-authentication'
+import { DBService } from '../../services/db.service';
 
 @Component({
    selector: 'app-edition',
@@ -23,11 +24,11 @@ export class EditionPage implements OnInit {
    }
 
    constructor(
+      private dbSrv: DBService,
       private globalSrv: GlobalService,
       private formBuilder: FormBuilder,
       private chooser: Chooser,
       private fbsSrv: FbsService,
-      private firebaseSrv: FirebaseService,
       private modalController: ModalController
    ) {
       console.log('EditionPage constructor')
@@ -68,7 +69,7 @@ export class EditionPage implements OnInit {
       }
 
       this.user.displayName = value['displayName']
-      await this.firebaseSrv.updateUserData(this.user)
+      await this.dbSrv.updateUser(this.user)
       this.modalController.dismiss()
    }
    cancel() {

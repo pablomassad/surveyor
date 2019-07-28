@@ -3,7 +3,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
 import { DBService } from '../shared/services/db.service'
 import { Observable } from 'rxjs';
 import { ViewController } from '@ionic/core';
-import { NavParams } from '@ionic/angular';
+import { NavParams, ModalController } from '@ionic/angular';
 
 
 @Component({
@@ -23,6 +23,7 @@ export class ContactsPage implements OnInit, OnDestroy {
    private uid:string
 
    constructor(
+      private modalController: ModalController,
       private navParams: NavParams,
       private view: ViewController,
       private fs: DBService,
@@ -95,6 +96,6 @@ export class ContactsPage implements OnInit, OnDestroy {
       return res
    }
    closeModal(){
-      //this.view.dismiss(null)
+      this.modalController.dismiss()
    }
 }

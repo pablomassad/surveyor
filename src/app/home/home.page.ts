@@ -41,9 +41,9 @@ export class HomePage implements OnInit, OnDestroy {
 
    ngOnInit() {
       console.log('HomePage init')
-      this.userInfo = this.globalSrv.getItemRAM('usr')
-      const plataforma = this.globalSrv.getItemRAM('plataforma')
-      // if (plataforma == "mobile") {
+      this.userInfo = this.globalSrv.getItemRAM('userInfo')
+      const isMobile = this.globalSrv.getItemRAM('isMobile')
+      // if (isMobile) {
       //    this.fcmSrv.initFCM(this.userInfo.uid)
       //    this.fcmSrv.getToken()
       //    this.appSrv.message('user: ' + this.userInfo.displayName)

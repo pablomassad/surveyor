@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
    ) {
       console.log('LoginPage constructor')
       this.appSrv.configLoading('p&pSoft.png', 'spinnerClass', 'spinnerCss')
-      
+
       this.validations_form = this.formBuilder.group({
          email: new FormControl('',
             Validators.compose([
@@ -68,18 +68,23 @@ export class LoginPage implements OnInit {
    async tryEmailLogin(value) {
       try {
          await this.authSrv.doLogin(value)
-         this.route.navigate(['/menu/home']) 
+         this.route.navigate(['/menu/home'])
       } catch (error) {
          this.appSrv.message('Usuario o contraseña inválidos', 'error')
       }
    }
 
    async gotoRegister() {
-      const modal = await this.modalController.create({
-         component: RegisterPage,
-         componentProps: {}
-      })
-      return await modal.present()
+      try {
+         const modal = await this.modalController.create({
+            component: RegisterPage,
+            componentProps: {}
+         })
+         return await modal.present()
+      } catch (error) {
+         console.log('Registration error: ', error)
+         this.appSrv.message('El usuario ya existe', 'error')
+      }
    }
 
 

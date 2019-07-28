@@ -23,6 +23,7 @@ export class EditEventPage implements OnInit, OnDestroy {
    newItem: string
 
    constructor(
+      private modalController: ModalController,
       private alertCtrl: AlertController,
       private platform: Platform,
       private navParams: NavParams,
@@ -168,10 +169,10 @@ export class EditEventPage implements OnInit, OnDestroy {
             break;
       }
       this.fs.saveEvent(this.evt)
-      //this.view.dismiss()
+      this.modalController.dismiss()
    }
    closeModal() {
-      //this.view.dismiss(null)
+      this.modalController.dismiss()
    }
 
    private updateSelectionKeys() {
