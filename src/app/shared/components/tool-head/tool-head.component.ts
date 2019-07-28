@@ -3,7 +3,7 @@ import { ActionSheetController, ModalController } from '@ionic/angular'
 import { AuthService, UserModel } from 'fwk4-authentication'
 import { Router } from '@angular/router'
 import { EditionPage } from './edition.page'
-import { GlobalService } from 'fwk4-services';
+import { GlobalService } from 'fwk4-services'
 
 @Component({
    selector: 'app-tool-head',

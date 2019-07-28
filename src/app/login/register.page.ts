@@ -9,7 +9,7 @@ import { Chooser } from '@ionic-native/chooser/ngx'
 @Component({
    selector: 'app-register',
    templateUrl: './register.page.html',
-   styleUrls: ['./register.page.scss', '../buttons.scss']
+   styleUrls: ['./register.page.scss']
 })
 export class RegisterPage implements OnInit {
    private fileInfo: any

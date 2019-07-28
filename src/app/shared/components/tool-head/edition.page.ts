@@ -10,7 +10,7 @@ import { DBService } from '../../services/db.service';
 @Component({
    selector: 'app-edition',
    templateUrl: './edition.page.html',
-   styleUrls: ['./edition.page.scss', '../buttons.scss']
+   styleUrls: ['./edition.page.scss']
 })
 export class EditionPage implements OnInit {
    private fileInfo: any

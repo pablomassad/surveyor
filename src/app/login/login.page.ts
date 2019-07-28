@@ -10,7 +10,7 @@ import { RegisterPage } from './register.page'
 @Component({
    selector: 'app-login',
    templateUrl: './login.page.html',
-   styleUrls: ['./login.page.scss', '../buttons.scss'],
+   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
 
@@ -59,10 +59,11 @@ export class LoginPage implements OnInit {
    }
 
    async ngOnInit() {
-      let usr = await this.authSrv.loggedUser()
-      if (usr != null) {
-         this.route.navigate(['/menu/home'])
-      }
+      //let u = await this.authSrv.isAuthenticated()
+      //console.log('afAuth user: ', u)  // return firebase.user = null or data
+      let usr = await this.authSrv.loggedUser()  // return UserModel null or data (getUser() return undefined or data)
+      console.log('firebase.user: ', usr)
+      if (usr) this.route.navigate(['/menu/home'])
    }
 
    async tryEmailLogin(value) {

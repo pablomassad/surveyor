@@ -44,10 +44,10 @@ export class HomePage implements OnInit, OnDestroy {
       this.userInfo = this.globalSrv.getItemRAM('userInfo')
       const isMobile = this.globalSrv.getItemRAM('isMobile')
       // if (isMobile) {
-      //    this.fcmSrv.initFCM(this.userInfo.uid)
+      //    this.fcmSrv.initFCM(this.userInfo.id)
       //    this.fcmSrv.getToken()
       //    this.appSrv.message('user: ' + this.userInfo.displayName)
-      //    this.fcmSrv.subscribeTopic(this.userInfo.uid)
+      //    this.fcmSrv.subscribeTopic(this.userInfo.id)
       //    this.fcmSrv.listenOnNotification().subscribe(o => {
       //       this.appSrv.message('Mensaje recibido!!!', 'info')
       //       console.log('msg received: ', o)
@@ -55,8 +55,8 @@ export class HomePage implements OnInit, OnDestroy {
       //    })
       // }
 
-      this.notifyMemberInEvent(this.userInfo.uid)
-      this.subEvt = this.fs.getEventsByUid(this.userInfo.uid).subscribe(data => {
+      //this.notifyMemberInEvent(this.userInfo.id)
+      this.subEvt = this.fs.getEventsByUid(this.userInfo.id).subscribe(data => {
          this.events = data
       })
       this.subCom = this.fs.getCommunity().subscribe(data => {
@@ -106,10 +106,10 @@ export class HomePage implements OnInit, OnDestroy {
             {
                text: 'Si',
                handler: () => {
-                  if (ev.owner === this.userInfo.uid)
+                  if (ev.owner === this.userInfo.id)
                      this.fs.deleteEvent(ev)
                   else {
-                     ev.members[this.userInfo.uid] = false
+                     ev.members[this.userInfo.id] = false
                      this.fs.updateUser(ev)
                   }
                }
@@ -172,10 +172,10 @@ export class HomePage implements OnInit, OnDestroy {
       //    }
       // }
    }
-   private notifyMemberInEvent(uid) {
+   private notifyMemberInEvent(id) {
       // try {
       //    if (!idEvtParam) return
-      //    this.subNotify = this.http.get<any>('https://us-central1-events-12be3.cloudfunctions.net/notifyMember/' + idEvtParam + '/' + uid)
+      //    this.subNotify = this.http.get<any>('https://us-central1-events-12be3.cloudfunctions.net/notifyMember/' + idEvtParam + '/' + id)
       //       .subscribe(o => {
       //          console.log('Notify ok: ', o)
       //       })
@@ -199,7 +199,7 @@ export class HomePage implements OnInit, OnDestroy {
       const lst: any = []
       if (this.userInfo.contacts) {
          this.community.forEach(p => {
-            const sel = (this.userInfo.contacts[p.uid])
+            const sel = (this.userInfo.contacts[p.id])
             if (sel == true) {
                lst.push(p)
             }
@@ -211,12 +211,12 @@ export class HomePage implements OnInit, OnDestroy {
       const lst: any = []
       if (ev.members) {
          Object.keys(ev.members).forEach(m => {
-            const mem = this.community.find(c => c.uid == m)
+            const mem = this.community.find(c => c.id == m)
             if (mem)
                lst.push(mem)
          })
          // this.community.forEach(p => {
-         //    const sel = (ev.members[p.uid])
+         //    const sel = (ev.members[p.id])
          //    if (sel == true) {
          //       lst.push(p)
          //    }
