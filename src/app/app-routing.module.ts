@@ -12,7 +12,7 @@ const routes: Routes = [
       canActivate: [AuthGuardService],
       loadChildren: './members/member-routing.module#MemberRoutingModule'
    },
-  { path: 'configuration', loadChildren: './configuration/configuration.module#ConfigurationPageModule' }
+  { path: 'configuration', loadChildren: './configuration/configuration.module#ConfigurationPageModule' },
 ]
 
 @NgModule({

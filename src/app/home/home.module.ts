@@ -6,8 +6,10 @@ import { Fwk4PipesModule } from 'fwk4-pipes'
 import { OrderModule } from 'ngx-order-pipe'
 import { Routes, RouterModule } from '@angular/router'
 import { ToolHeadComponentModule } from '../shared/components/tool-head/tool-head.module'
-
+import { SocialSharing } from '@ionic-native/social-sharing/ngx'
 import { HomePage } from './home.page'
+import { EventPage } from './event.page';
+
 
 const routes: Routes = [
    {
@@ -26,10 +28,14 @@ const routes: Routes = [
       IonicModule,
       RouterModule.forChild(routes)
    ],
-   declarations: [HomePage]
+   entryComponents: [
+       EventPage
+   ],
+   declarations: [HomePage, EventPage],
+   providers:[SocialSharing]
 })
-export class HomePageModule { 
-   constructor(){
+export class HomePageModule {
+   constructor() {
       console.log('HomePageModule constructor')
    }
 }

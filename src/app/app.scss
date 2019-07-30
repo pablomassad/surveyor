@@ -19,8 +19,118 @@ body {
 
 }
 
+.headApp {
+   position: fixed;
+   right: 10px;
+   top: 10px;
+   z-index: 1;
+ }
+ .progBar{
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+ }
+
+ .backPage {
+   // margin-top: 80px;
+   min-width: 310px;
+   background: -webkit-radial-gradient(#eee 28%, #d6d5d5 75%) !important;
+   animation-name: fadeIn;
+   animation-duration: 2s;
+ }
+ 
+ .grdToolbar {
+   display: grid;
+   grid-template-columns: 50px 1fr 40px; // background: linear-gradient(#ffffff59 88%, #000000);
+   background: radial-gradient(circle at 50%, #fff, #eee 70%, #ddd 85%, #bdbcbc 100%);
+   padding: 10px 5px 5px 10px;
+   box-shadow: 0px 2px 4px #666;
+}
 
 
+
+
+
+.title {
+   padding-left: 20px;
+   font-size: 25px;
+   font-weight: bold;
+   color: #333;
+   align-self: center;
+   text-shadow: 2px 2px 3px #888;
+}
+
+
+
+.logoTipo {
+   width: 50px;
+}
+
+ .sortName {
+   margin-right: 60px;
+ }
+ 
+ .searchIcon {
+   font-size: 30px;
+   margin-top: -2px;
+   align-self: center;
+ }
+ 
+ .searchBar {
+   margin: 0px;
+ }
+
+
+ .statusIcons {
+   float: right;
+   margin-top: 4px;
+   margin-right: -20px;
+   font-size: 25px !important;
+   text-shadow: 1px 1px 2px black;
+ }
+ 
+ .iconStatus {
+   color: #779;
+   margin-right: 12px;
+   float: left;
+   height: 30px;
+ }
+ 
+ .iconStatusON {
+   color: white;
+ }
+ 
+ .counter {
+   opacity: 0;
+   width: 15px;
+   height: 15px;
+   position: relative;
+   right: -12px;
+   top: -32px;
+   background-color: red;
+   border-radius: 100%;
+   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+   box-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+   z-index: 1000;
+   font-size: 12px;
+ }
+ 
+ .counterON {
+   opacity: 1;
+ }
+ 
+ .counterNumber {
+   font-size: 11px;
+   font-family: sans-serif;
+   z-index: 1000;
+   color: #fff;
+   text-align: center;
+   font-weight: bold;
+   padding-top: 2px;
+   text-shadow: .5px .5px 0px rgba(0, 0, 0, 1);
+ }
+
+ 
 .toolbarTitle {
    color: gray;
    padding-left: 10px;

@@ -3,19 +3,30 @@
 </app-tool-head>
 
 <ion-content>
-   <div class="grdSearchBar">
+   <ion-item style="--ion-background-color: linear-gradient(#ddd, #fff);">
+      <ion-icon name="person" class="filterIcon" slot="start"></ion-icon>
+      <ion-label position="floating" class="txtCriteria" style="font-size: 16px !important;padding-top: 4px;">Buscar evento</ion-label>
+      <ion-input type="text" [(ngModel)]="criteria" class="filterInput"></ion-input>
+      <div slot="end" class="sortPanel">
+         <div class="sortBy">{{getSortName()}}</div>
+         <ion-icon name="{{getIcon()}}" class="sortName searchIcon"></ion-icon>
+      </div>
+   </ion-item>
+
+   <!-- <div class="grdSearchBar">
       <ion-icon name="search" class="searchIcon" style="padding-left:10px"></ion-icon>
       <ion-input type="text" class="searchBar" placeholder="Buscar Evento" [(ngModel)]="searchText"></ion-input>
       <div class="sortBy">{{getSortName()}}</div>
       <ion-icon name="{{getIcon()}}" class="sortName searchIcon"></ion-icon>
       <div></div>
-   </div>
+   </div> -->
 
    <ion-refresher (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
-         refreshingText="Refreshing...">
+      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Tire para refrescar" refreshingSpinner="circles"
+         refreshingText="Refrescando...">
       </ion-refresher-content>
    </ion-refresher>
+
    <ion-list *ngIf="events">
       <ion-item-sliding class="eventCard"
          *ngFor="let evt of events | searchInfo: searchText | orderBy:sortField:direction ">
@@ -58,23 +69,73 @@
       </ion-item-sliding>
    </ion-list>
 
-
-   <ion-fab class="btnAddEvent">
-      <button ion-fab mini (click)="addEvent()" color="secondary" style="box-shadow: 5px 5px 20px black">
-         <ion-icon name="add"></ion-icon>
-      </button>
-   </ion-fab>
-   <ion-fab class="btnSort" top right #fab>
-      <button ion-fab mini>
+   <ion-fab class="btnSort" vertical="top" horizontal="end" class="glass glRound" style="position: absolute" >
+      <ion-fab-button>
          <ion-icon name="funnel"></ion-icon>
-      </button>
+      </ion-fab-button>
       <ion-fab-list>
-         <button ion-fab mini (click)="getSortedEvents('creationDate', fab)">
+         <ion-fab-button class="glass glRound btnFab" (click)="getSortedEvents('creationDate')" >
             <ion-icon name="calendar"></ion-icon>
-         </button>
-         <button ion-fab mini (click)="getSortedEvents('name', fab)">
+         </ion-fab-button>
+         <ion-fab-button class="glass glRound btnFab" (click)="getSortedEvents('name')">
             <ion-icon name="create"></ion-icon>
-         </button>
+         </ion-fab-button>
       </ion-fab-list>
    </ion-fab>
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="glass glRound" style="position: fixed;">
+      <ion-fab-button (click)="addEvent()">
+         <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+   </ion-fab>
 </ion-content>
+
+
+<!--
+
+Classes:
+========
+sortBy
+eventCard
+grdEvent
+adminFlag
+eventType
+btnAddEvent
+btnSort
+
+*sortName
+*searchIcon
+*evtClosed
+
+
+app.scss:
+=========
+filterIcon
+txtCriteria
+filterInput
+
+
+
+Bindings:
+=========
+criteria
+events
+searchText
+sortField
+direction
+evt
+
+
+Methods:
+========
+getSortName()
+getIcon()
+doRefresh()
+showEvent()
+removeEvent()
+evalTypeIcon()
+editEvent()
+addEvent()
+getSortedEvents()
+
+
+-->

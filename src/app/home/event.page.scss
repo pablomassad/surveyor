@@ -1,0 +1,21 @@
+.grdBtnsMembers {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-column-gap: 5px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+ }
+
+ .grdSelectionItem {
+   background: white !important;
+   box-shadow: 1px 1px 3px #555;
+   border-radius: 10px;
+   margin: 5px 0px;
+   width: 100%;
+   height: 100%;
+   display: grid;
+   grid-template-columns: 40px 1fr 50px;
+   align-items: center;
+   padding-left: 20px;
+   opacity: 1 !important;
+ }

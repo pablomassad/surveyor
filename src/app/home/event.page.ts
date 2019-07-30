@@ -1,3 +1,4 @@
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavParams, Events, ModalController, Platform, AlertController } from '@ionic/angular';
 import { ApplicationService } from 'fwk4-services'
@@ -5,32 +6,32 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx'
 
 import * as moment from 'moment'
 import { DBService } from '../shared/services/db.service';
-import { ViewController } from '@ionic/core';
+
 
 @Component({
-   selector: 'page-editEvent',
-   templateUrl: 'editEvent.html'
+  selector: 'app-event',
+  templateUrl: './event.page.html',
+  styleUrls: ['./event.page.scss'],
 })
-export class EditEventPage implements OnInit, OnDestroy {
+export class EventPage implements OnInit, OnDestroy {
    title: string
    evt: any
-   user: any
-   contactsFull: any[]
    question: string
    answerType: string
-   selectionItems: object = {}
    selectionItemsKeys: string[]
    newItem: string
+
+   private selectionItems: object = {}
+   private user: any
+   private contactsFull: any[]
 
    constructor(
       private modalController: ModalController,
       private alertCtrl: AlertController,
       private platform: Platform,
       private navParams: NavParams,
-      private view: ViewController,
       private appSrv: ApplicationService,
       private fs: DBService,
-      private modal: ModalController,
       private socialSharing: SocialSharing
    ) {
       console.log('EditEventPage constructor')
@@ -57,6 +58,7 @@ export class EditEventPage implements OnInit, OnDestroy {
          this.answerType = this.evt.answerType
       }
    }
+   
    adminMembers() {
       // const mod: Modal = this.modal.create('MembersPage', {
       //    title: "Miembros",

@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { GlobalService, ApplicationService } from 'fwk4-services'
 import { Router } from '@angular/router'
 import { AlertController,ModalController } from '@ionic/angular'
-import { EditEventPage } from '../editEvent/editEvent'
 import { DBService } from '../shared/services/db.service'
 import { Subscription } from 'rxjs'
+import { EventPage } from './event.page';
 
 @Component({
    selector: 'app-home',
@@ -23,6 +23,7 @@ export class HomePage implements OnInit, OnDestroy {
    searchText: string
    sortField: string = 'creationDate'
    direction: boolean = false
+
    private subNotify: Subscription
    private subEvt: Subscription
    private subCom: Subscription
@@ -83,10 +84,10 @@ export class HomePage implements OnInit, OnDestroy {
          refresher.complete();
       }, 2000);
    }
-   addEvent() {
+   async addEvent() {
       this.showEditEvent('Nuevo Evento', { members: [] })
    }
-   editEvent(ev, i) {
+   async editEvent(ev, i) {
       this.showEditEvent('Editar Evento', ev)
    }
    showEvent(ev, i) {
@@ -135,10 +136,9 @@ export class HomePage implements OnInit, OnDestroy {
       }
       return src
    }
-   getSortedEvents(sort, fab) {
+   getSortedEvents(sort) {
       this.sortField = sort
       this.direction = !this.direction
-      fab.close()
    }
    getSortName() {
       if (this.sortField === "creationDate")
@@ -185,7 +185,7 @@ export class HomePage implements OnInit, OnDestroy {
    }
    private async showEditEvent(tit, ev) {
       const modal = await this.modalCtrl.create({
-         component: EditEventPage,
+         component: EventPage,
          componentProps: {
             title: tit,
             evt: ev,
