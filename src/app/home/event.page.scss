@@ -1,11 +1,8 @@
-.grdBtnsMembers {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   grid-column-gap: 5px;
-   margin-top: 10px;
-   margin-bottom: 10px;
- }
-
+.btnEvent{
+   background: rgb(0, 140, 255);
+   border-radius: 20px;
+   box-shadow: 1px 1px 3px gray;
+}
  .grdSelectionItem {
    background: white !important;
    box-shadow: 1px 1px 3px #555;
@@ -19,3 +16,4 @@
    padding-left: 20px;
    opacity: 1 !important;
  }
+

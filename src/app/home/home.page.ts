@@ -189,7 +189,6 @@ export class HomePage implements OnInit, OnDestroy {
          componentProps: {
             title: tit,
             evt: ev,
-            user: this.userInfo,
             contactsFull: this.contactsFull
           }
       })

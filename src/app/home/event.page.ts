@@ -1,7 +1,7 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavParams, Events, ModalController, Platform, AlertController } from '@ionic/angular';
-import { ApplicationService } from 'fwk4-services'
+import { ApplicationService, GlobalService } from 'fwk4-services'
 import { SocialSharing } from '@ionic-native/social-sharing/ngx'
 
 import * as moment from 'moment'
@@ -22,10 +22,11 @@ export class EventPage implements OnInit, OnDestroy {
    newItem: string
 
    private selectionItems: object = {}
-   private user: any
+   private userInfo: any
    private contactsFull: any[]
 
    constructor(
+      private globalSrv: GlobalService,
       private modalController: ModalController,
       private alertCtrl: AlertController,
       private platform: Platform,
@@ -41,14 +42,14 @@ export class EventPage implements OnInit, OnDestroy {
    }
    ngOnInit(): void {
       console.log('EditEventPage init')
+      this.userInfo = this.globalSrv.getItemRAM('userInfo')
       this.title = this.navParams.get('title')
       this.evt = this.navParams.get('evt')
-      this.user = this.navParams.get('user')
       this.contactsFull = this.navParams.get('contactsFull')
 
-      this.evt.owner = this.user.uid
-      this.evt.ownerName = this.user.displayName
-      this.evt.ownerPhotoURL = this.user.photoURL
+      this.evt.owner = this.userInfo.uid
+      this.evt.ownerName = this.userInfo.displayName
+      this.evt.ownerPhotoURL = this.userInfo.photoURL
       this.setMembersToContacts()
 
       this.question = (this.evt.question) ? this.evt.question : ""
