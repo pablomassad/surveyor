@@ -33,7 +33,7 @@
     "@ionic/angular-toolkit": "~1.4.0",
     "@ionic/pro": "2.0.4",
     "@ionic/storage": "^2.2.0",
-    "cordova-android": "7.1.4",
+    "cordova-android": "11.0.0",
     "cordova-plugin-chooser": "^1.2.5",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-facebook4": "^4.2.1",
